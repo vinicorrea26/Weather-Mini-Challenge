@@ -27,6 +27,7 @@ def umbrella():
     diatempo = datetime.fromtimestamp(dados["list"][0]["dt"])
     dia = diatempo.weekday()
     semana.append(dia)
+    #captura os dias da semana e os valores de humdiade de cada dia
     for dado in dados["list"]:
         data = datetime.fromtimestamp(dado["dt"])
         newdia = data.weekday()
@@ -46,5 +47,19 @@ def umbrella():
     valor = valor/media
     humidade.append(valor)
 
-    return render_template("wheather.html", datas=dados,semana=semana, humidade=humidade)
+    #dias da semana
+    DiasSemanda = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+    #Verifica os dias que possuem mais de 70% de humidade
+    var = 0
+    chuva = []
+    for hum in humidade:
+        if hum > 70:
+            dia = semana[var]
+            chuva.append(DiasSemanda[dia])
+            var += 1
+        else:
+            var += 1
+
+    return render_template("wheather.html",semana=semana, humidade=humidade, chuva=chuva)
 

@@ -6,25 +6,10 @@
 
 {% block body %}
 
-    {% for vava in valoreshum%}
-        {{vava}}
-    {% endfor %}<br>
-    {% for vava in valoreshumm%}
-        {{vava}}
-    {% endfor %}<br>
-
-    {% for dia in semana%}
-        {{dia}}
-    {% endfor %}<br>
-    {% for hum in humidade%}
-        {{hum}}
-    {% endfor %}<br>
-
-    {% for data in datas.list %}
-        {{data.dt_txt}}
-        {{data.main.humidity}}
-        {{valoresdias}}
-        <br>
+    <b>You should take an umbrella in these days: </b>
+    {% for chu in chuva%}
+        {{chu}},
     {% endfor %}
+    
 {% endblock %}
 
